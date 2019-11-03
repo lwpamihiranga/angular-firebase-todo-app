@@ -1,0 +1,24 @@
+<div class="container">
+    <ul>
+        <li *ngFor="let todo of todos | async">{{ todo.todo }}
+            <a (click)="editClick(todo.todo, todo.id)" class="btn btn-primary">Edit</a>
+            <a (click)="deleteTodo(todo.id)" class="btn btn-primary">Delete</a>
+            <a class="btn btn-secondary">Set Reminder</a>
+        </li>
+    </ul>
+    <div class="input-group mb-3">
+            <input type="text" class="form-control" #TodoUpdate value={{myValue}}>
+            <div class="input-group-append">
+                <a (click)="updateTodo(todoId, TodoUpdate.value)" class="btn btn-secondary">Update</a>
+            </div>
+    </div>
+
+    <!-- date time picker code -->
+    <div class="input-group mb-3">
+            <input type="text" class="form-control" #TodoUpdate value={{myValue}}>
+            <div class="input-group-append">
+                <a (click)="updateTodo(todoId, TodoUpdate.value)" class="btn btn-secondary">Set Reminder</a>
+            </div>
+    </div>
+        <!-- end of date time picker code -->
+</div>

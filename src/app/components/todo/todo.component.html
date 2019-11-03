@@ -1,0 +1,14 @@
+<div class="container">
+    <div class="jumbotron">
+        <h4>Hi, {{ userEmail }}</h4>
+        <a class="btn btn-primary" (click)="trySignOut()">Sign Out</a>
+        <h3>Todo List</h3>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" #TodoInput>
+            <div class="input-group-append">
+                <a (click)="addTodo(TodoInput.value)"><span class="input-group-text material-icons">add_circle</span></a>
+            </div>
+        </div>
+        <app-todo-list></app-todo-list>
+    </div>
+</div>
