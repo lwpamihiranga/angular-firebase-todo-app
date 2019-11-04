@@ -15,7 +15,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireMessagingModule, AngularFireMessaging } from '@angular/fire/messaging'; 
 import { LoginComponent } from './components/login/login.component';
-import { MessagingService } from './services/messaging.service'
 import { AsyncPipe } from '@angular/common';
 import { AngularFireDatabase } from '@angular/fire/database';
 
@@ -37,7 +36,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
     AngularFireMessagingModule,
     AngularFireAuthModule
   ],
-  providers: [AngularFireAuth, MessagingService, AsyncPipe, AngularFireDatabase ],
+  providers: [AngularFireAuth, AsyncPipe, AngularFireDatabase ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

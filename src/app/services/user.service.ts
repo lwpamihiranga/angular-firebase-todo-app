@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { User } from 'firebase';
+import { Observable } from 'rxjs';
+
+import { switchMap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(public angularFireAuth: AngularFireAuth, private angularFirestore: AngularFirestore, public router: Router) { }
+  user: Observable<User>;
+  constructor(public angularFireAuth: AngularFireAuth, private angularFirestore: AngularFirestore, public router: Router) { 
+  }
 
   getCurrentUser():string {
     let userId = '';

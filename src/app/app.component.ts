@@ -11,13 +11,13 @@ export class AppComponent {
 
   message;
 
-  constructor(private messagingService: MessagingService) {}
-
+  constructor(public msg: MessagingService) {}
   ngOnInit() {
-    const userId = 'user001';
-    this.messagingService.requestPermission(userId)
-    this.messagingService.receiveMessage()
-    this.message = this.messagingService.currentMessage
+    // const userId = 'cEvkIEs7bmbZTlCkiMz9JYDdfPW2';
+    // this.msg.getPermission(userId);
+    // this.msg.monitorRefresh(userId);
+    // this.msg.receiveMessages();
+
   }
 
 }

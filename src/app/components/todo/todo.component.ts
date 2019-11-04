@@ -4,6 +4,7 @@ import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/fire
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
+import { MessagingService } from 'src/app/services/messaging.service';
 
 @Component({
   selector: 'app-todo',
@@ -19,7 +20,10 @@ export class TodoComponent implements OnInit {
   todoRef: AngularFirestoreCollection<Todo>;
   todo: Observable<Todo[]> 
 
-  constructor(private afs: AngularFirestore, public afa: AngularFireAuth, private userService: UserService) { 
+  constructor(private afs: AngularFirestore, 
+        public afa: AngularFireAuth, 
+        private userService: UserService, 
+        public msg: MessagingService) { 
     this.todoRef = this.afs.collection<Todo>('todos');
 
     this.model = {
@@ -33,7 +37,17 @@ export class TodoComponent implements OnInit {
         this.userEmail = user.email;
         this.userId = user.uid;
       }
+
+      // const userId = 'cEvkIEs7bmbZTlCkiMz9JYDdfPW2';
+      this.msg.getPermission(this.userId);
+      // this.msg.monitorRefresh(this.userId);
+      this.msg.receiveMessages();
     })
+
+    // const userId = 'cEvkIEs7bmbZTlCkiMz9JYDdfPW2';
+    // this.msg.getPermission(this.userId);
+    // this.msg.monitorRefresh(this.userId);
+    // this.msg.receiveMessages();
   }
 
   addTodo(todo: string) {
