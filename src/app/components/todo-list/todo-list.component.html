@@ -3,8 +3,9 @@
         <li *ngFor="let todo of todos | async">{{ todo.todo }}
             <a (click)="editClick(todo.todo, todo.id)" class="btn btn-primary">Edit</a>
             <a (click)="deleteTodo(todo.id)" class="btn btn-primary">Delete</a>
-            <input  type="datetime-local" min="2019-01-01T00:00" max="2020-12-31T00:00" #ToSetReminde value="{{todo.dueDate}}">
+            <input  type="datetime-local" min="2019-01-01T00:00" max="2020-12-31T00:00" #ToSetReminder value="{{todo.dueDate}}">
             <a (click)="setReminder(todo.id, ToSetReminder.value)" class="btn btn-secondary">Set Reminder</a>
+            <button (click)="checkDate(todo.dueDate)">check date</button>
         </li>
     </ul>
     <div class="input-group mb-3">

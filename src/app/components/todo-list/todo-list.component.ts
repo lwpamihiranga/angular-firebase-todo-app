@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Todo } from '../todo/todo';
-import { Observable } from 'rxjs';
+import { Observable, TimeoutError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
@@ -59,5 +59,69 @@ export class TodoListComponent   {
     console.log("value", dateValue);
 
     this.userService.setRemider(id, dateValue);
+  }
+
+  checkDate(date) {
+    const now = new Date().toLocaleDateString();
+    const nowDate = new Date().getDate();
+    const nowMonth = new Date().getMonth();
+    const nowYear = new Date().getFullYear();
+    const nowHour = new Date().getHours();
+    const nowMin = new Date().getMinutes();
+    console.log(now);
+    console.log(date);
+
+    // console.log(nowDate);
+    // console.log(nowMonth);
+    // console.log(nowYear);
+    // console.log(nowHour);
+    // console.log(nowMin);
+
+    const dueDate = parseInt(date.slice(8,10));
+    const dueMonth = parseInt(date.slice(5,7));
+    const dueYear = parseInt(date.slice(0,4));
+    const dueHour = parseInt(date.slice(11,13));
+    const dueMin = parseInt(date.slice(14,));
+
+
+    // console.log(dueDate);
+    // console.log(dueMonth);
+    // console.log(dueYear);
+    // console.log(dueHour);
+    // console.log(dueMin);
+
+    if(dueYear > nowYear) {
+      console.log('has time')
+      return true;
+    } else if(dueYear == nowYear) {
+      if(dueMonth > nowMonth) {
+      console.log('has time')
+
+        return true;
+      } else if(dueMonth == nowMonth) {
+        if(dueDate > nowDate) {
+      console.log('has time')
+
+          return true;
+        } else if(dueDate == nowDate) {
+          if(dueHour > nowHour) {
+      console.log('has time')
+
+            return true;
+          } else if(dueHour == nowHour) {
+            if(dueMin > nowMin) {
+      console.log('has time')
+
+              return true;
+            }
+          }
+        }
+      }
+    } else {
+      console.log('expired')
+
+      return false;
+    }
+    return true;
   }
 }
