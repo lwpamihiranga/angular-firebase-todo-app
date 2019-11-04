@@ -53,4 +53,11 @@ export class TodoListComponent   {
     this.todoId = id;
     this.myValue = todo;
   }
+
+  setReminder(id, dateValue) {
+    console.log("id", id);
+    console.log("value", dateValue);
+
+    this.userService.setRemider(id, dateValue);
+  }
 }

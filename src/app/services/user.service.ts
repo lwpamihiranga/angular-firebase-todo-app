@@ -83,4 +83,8 @@ export class UserService {
   updateTodo(id, todo:string) {
     this.angularFirestore.collection('todos').doc(id).update({ todo: todo });
   }
+
+  setRemider(id, date) {
+    this.angularFirestore.collection('todos').doc(id).update({ dueDate: date });
+  }
 }
