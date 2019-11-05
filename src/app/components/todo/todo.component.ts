@@ -15,7 +15,6 @@ export class TodoComponent implements OnInit {
   userId = '';
   userEmail = '';
   model: Todo;
-  successMsg = 'Data saved successfully';
 
   todoRef: AngularFirestoreCollection<Todo>;
   todo: Observable<Todo[]> 
@@ -29,7 +28,7 @@ export class TodoComponent implements OnInit {
     this.model = {
       userId: '',
       todo: '',
-      isChecked: null
+      isChecked: false
     }
 
     this.afa.auth.onAuthStateChanged(user => {
@@ -38,8 +37,7 @@ export class TodoComponent implements OnInit {
         this.userId = user.uid;
       }
 
-      // const userId = 'cEvkIEs7bmbZTlCkiMz9JYDdfPW2';
-      this.msg.getPermission(this.userId);
+      const token = this.msg.getPermission(this.userId);
       // this.msg.monitorRefresh(this.userId);
       this.msg.receiveMessages();
     })
@@ -57,8 +55,6 @@ export class TodoComponent implements OnInit {
       isChecked: false
     }
     this.todoRef.add(this.model);
-    // .then(_ => alert(this.successMsg));
-    // this.todoRef.doc(this.model.id.toString()).set(this.model).then(_ => alert(this.successMsg));
   }
 
   ngOnInit() {

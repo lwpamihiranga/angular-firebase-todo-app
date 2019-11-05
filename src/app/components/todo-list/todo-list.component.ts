@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 import { Todo } from '../todo/todo';
-import { Observable, TimeoutError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
@@ -21,6 +21,7 @@ export class TodoListComponent   {
   userId = '';
   myValue = '';
   todoId = '';
+
   constructor(private readonly afs: AngularFirestore, public afa: AngularFireAuth, private userService: UserService) { 
       this.afa.auth.onAuthStateChanged(user => {
         if(user) {
@@ -49,6 +50,10 @@ export class TodoListComponent   {
     this.myValue = '';
   }
 
+  updateChecked(id, value:boolean) {
+    this.userService.updateIsChecked(id, value);
+  }
+
   editClick(todo, id) {
     this.todoId = id;
     this.myValue = todo;
@@ -61,10 +66,11 @@ export class TodoListComponent   {
     this.userService.setRemider(id, dateValue);
   }
 
-  checkDate(date) {
+  checkDate(id, date) {
     const now = new Date().toLocaleDateString();
     const nowDate = new Date().getDate();
-    const nowMonth = new Date().getMonth();
+    // const nowMonth = new Date().getMonth();
+    const nowMonth = parseInt(now.slice(0,2)); // there is an error in above getMonth method. It return a one month down. that why the slicing is used
     const nowYear = new Date().getFullYear();
     const nowHour = new Date().getHours();
     const nowMin = new Date().getMinutes();
@@ -90,38 +96,47 @@ export class TodoListComponent   {
     // console.log(dueHour);
     // console.log(dueMin);
 
+    // checking whether the current date and time has exceeded the due date of the task
     if(dueYear > nowYear) {
-      console.log('has time')
-      return true;
+      console.log('Not exceeded the due date');
+      this.updateChecked(id, false);
     } else if(dueYear == nowYear) {
       if(dueMonth > nowMonth) {
-      console.log('has time')
-
-        return true;
+        console.log('Not exceeded the due date');
+        this.updateChecked(id, false);
       } else if(dueMonth == nowMonth) {
         if(dueDate > nowDate) {
-      console.log('has time')
-
-          return true;
+          console.log('Not exceeded the due date');
+          this.updateChecked(id, false);
         } else if(dueDate == nowDate) {
           if(dueHour > nowHour) {
-      console.log('has time')
-
-            return true;
+            console.log('Not exceeded the due date');
+            this.updateChecked(id, false);
           } else if(dueHour == nowHour) {
             if(dueMin > nowMin) {
-      console.log('has time')
-
-              return true;
+              console.log('Not exceeded the due date');
+              this.updateChecked(id, false);
+            } else {
+              console.log('Due date expired');
+              this.updateChecked(id, true);
             }
+          } else {
+            console.log('expired');
+            this.updateChecked(id, true);
           }
+        } else {
+          console.log('Due date expired');
+          this.updateChecked(id, true);
         }
+      } else {
+        console.log('Due date expired');
+        this.updateChecked(id, true);
       }
     } else {
-      console.log('expired')
-
-      return false;
+      console.log('Due date expired');
+      this.updateChecked(id, true);
     }
-    return true;
+
+    // this.userService.addMessage()
   }
 }

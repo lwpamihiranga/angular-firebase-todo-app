@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MessagingService } from './services/messaging.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +10,8 @@ export class AppComponent {
 
   message;
 
-  constructor(public msg: MessagingService) {}
+  constructor() {}
   ngOnInit() {
-    // const userId = 'cEvkIEs7bmbZTlCkiMz9JYDdfPW2';
-    // this.msg.getPermission(userId);
-    // this.msg.monitorRefresh(userId);
-    // this.msg.receiveMessages();
-
   }
 
 }

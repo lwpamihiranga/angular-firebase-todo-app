@@ -5,9 +5,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { User } from 'firebase';
 import { Observable } from 'rxjs';
 
-import { switchMap } from 'rxjs/operators';
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -55,7 +52,7 @@ export class UserService {
       });
     }
 
-    // sign out the user
+  // sign out the user
   signOut() {
     this.angularFireAuth.auth.signOut().then(res => {
       alert("SignOut");
@@ -66,25 +63,38 @@ export class UserService {
     })
   }
 
-  getTodos() {
-    
-  }
-
   // delete a particular todo
   deleteTodo(data) {
-    this.angularFirestore.collection('todos').doc(data).delete();
-    // .then(res => {
-    //   alert("Todo deleted");
-    // }).catch(err => {
-    //   alert("Sorry! Error occured!")
-    // });
+    this.angularFirestore.collection('todos').doc(data).delete()
+    .then(res => {
+      console.log("Todo deleted");
+    }).catch(err => {
+      alert("Sorry! Error occured!")
+    });
   }
 
+  // update todo function
   updateTodo(id, todo:string) {
     this.angularFirestore.collection('todos').doc(id).update({ todo: todo });
   }
 
+  // update isChecked property
+  updateIsChecked(id, value:boolean) {
+    this.angularFirestore.collection('todos').doc(id).update({isChecked: value})
+  }
+
+  //set reminder function
   setRemider(id, date) {
     this.angularFirestore.collection('todos').doc(id).update({ dueDate: date });
+  }
+
+  // add message function.
+  // not used. created for use with notification
+  addMessage(title, text, token) {
+    this.angularFirestore.collection('Messages').add({
+      title: title,
+      text: text,
+      fcmToken: token
+    });
   }
 }
