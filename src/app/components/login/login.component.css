@@ -5,3 +5,24 @@
 #register-btn {
     margin-left: 10px;
 }
+
+#login-form-container {
+    width: 30%;
+    height: fit-content;
+}
+
+#login-heading {
+    text-align: center;
+}
+
+#btn-login {
+    border-radius: 15px;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 40%;
+}
+
+p {
+    margin-top: 5%;
+    text-align: center;
+}

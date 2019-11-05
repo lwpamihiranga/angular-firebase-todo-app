@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,8 +11,8 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
 
   loginForm = this.formBuilder.group({
-    email: [''],
-    password: [''],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
 
   // userId = '';
