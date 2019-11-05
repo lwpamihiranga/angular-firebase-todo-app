@@ -58,6 +58,7 @@ export class TodoComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   trySignOut() {

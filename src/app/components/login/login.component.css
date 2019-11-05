@@ -1,5 +1,9 @@
 .container {
-    margin-top: 20px;
+    margin-top: 50px;
+}
+
+.jumbotron {
+    padding-top: 30px;
 }
 
 #register-btn {

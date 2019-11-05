@@ -1,5 +1,6 @@
-<div class="container">
-    <table class="table">
+<div id="my-tasks-container" class="container jumbotron">
+    <h3>My Tasks List</h3>
+    <!-- <table class="table">
         <thead>
             <tr>
                 <th scope="col">Task</th>
@@ -30,20 +31,28 @@
                 </td>
             </tr>
         </tbody>
-    </table>
-    <!-- <ul>
-        <li *ngFor="let todo of todos | async" [ngClass]="{'expired': todo.isChecked}">{{ todo.todo }}
-            <a (click)="editClick(todo.todo, todo.id)" class="btn btn-primary">Edit</a>
-            <a (click)="deleteTodo(todo.id)" class="btn btn-primary">Delete</a>
-            <input [ngClass]="{'expired': todo.isChecked}"  type="datetime-local" min="2019-01-01T00:00" max="2020-12-31T00:00" #ToSetReminder value="{{todo.dueDate}}">
-            <a (click)="setReminder(todo.id, ToSetReminder.value)" class="btn btn-secondary">Set Reminder</a>
-            <button id="check_btn" (click)="checkDate(todo.id, todo.dueDate)" style='visibility:hidden'>check date</button>
+    </table> -->
+    <ul>
+        <li *ngFor="let todo of todos | async">
+                <div class="input-group mb-3">
+                        <input id="todo-display" type="text" class="form-control" #TodoUpdate value={{todo.todo}} >
+                        <div class="input-group-append">
+                            <input [ngClass]="{'expired': todo.isChecked}"  type="datetime-local" min="2019-01-01T00:00" max="2020-12-31T00:00" #ToSetReminder value="{{todo.dueDate}}">
+                            <a (click)="setReminder(todo.id, ToSetReminder.value)"><span class="material-icons">alarm</span></a>
+                            <a (click)="editClick(todo.todo, todo.id)"><span class="material-icons">edit</span></a>
+                            <a (click)="deleteTodo(todo.id)"><span class="material-icons">delete</span></a>
+                            <a (click)="checkDate(todo.id, todo.dueDate)"><span class="material-icons">check_circle_outline</span></a>
+                        </div>
+                </div>
         </li>
-    </ul> -->
-    <div class="input-group mb-3">
-            <input type="text" class="form-control" #TodoUpdate value={{myValue}}>
+           
+    </ul>
+    <hr class="striped-border" style="border-width: thick;">
+    <div id="update-div" class="input-group mb-3">
+            <h5 style="display: inline; margin-right: 8px; margin-top: 7px;">Update your Task: </h5>
+            <input style="width: fit-content;" type="text" class="form-control" #TodoUpdate value={{myValue}}>
             <div class="input-group-append">
-                <a (click)="updateTodo(todoId, TodoUpdate.value)" class="btn btn-secondary">Update</a>
+                <a id="update-btn" (click)="updateTodo(todoId, TodoUpdate.value)" class="btn btn-secondary">Update</a>
             </div>
     </div>
 </div>

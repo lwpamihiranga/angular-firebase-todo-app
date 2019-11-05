@@ -1,14 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Catogories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link">Completed</a>
+            </li>
+          </ul>
+          <span class="navbar-text" style="margin-right: 12px;">
+            Hello, {{ userEmail }}
+          </span>
+          <button class="btn btn-outline-info my-2 my-sm-0" type="submit" (click)="trySignOut()">Sign Out</button>
+        </div>
+      </nav>
 <div class="container">
-    <div class="jumbotron">
-        <h4>Hi, {{ userEmail }}</h4>
-        <a class="btn btn-primary" (click)="trySignOut()">Sign Out</a>
-        <h3>Todo List</h3>
-        <div class="input-group mb-3">
+    
+        <!-- <h4>Hi, {{ userEmail }}
+                <a id="logout-btn" class="btn btn-primary" (click)="trySignOut()">Sign Out</a>
+        </h4> -->
+        <!-- <div class="jumbotron"> -->
+        <div id="add-task-dev" class="input-group mb-3">
+            <h5 style="display: inline; margin-right: 8px; margin-top: 7px;">Add new Task: </h5>
             <input type="text" class="form-control" #TodoInput>
             <div class="input-group-append">
                 <a (click)="addTodo(TodoInput.value)"><span class="input-group-text material-icons">add_circle</span></a>
             </div>
         </div>
-        <app-todo-list></app-todo-list>
-    </div>
+      
+    <!-- </div> -->
+    <app-todo-list></app-todo-list>
 </div>

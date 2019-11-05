@@ -21,7 +21,7 @@ export class TodoListComponent   {
   userId = '';
   myValue = '';
   todoId = '';
-
+  editDisable = true;
   constructor(private readonly afs: AngularFirestore, public afa: AngularFireAuth, private userService: UserService) { 
       this.afa.auth.onAuthStateChanged(user => {
         if(user) {
@@ -57,6 +57,7 @@ export class TodoListComponent   {
   editClick(todo, id) {
     this.todoId = id;
     this.myValue = todo;
+    this.editDisable = false;
   }
 
   setReminder(id, dateValue) {

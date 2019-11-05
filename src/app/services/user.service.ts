@@ -48,6 +48,7 @@ export class UserService {
       })
         this.router.navigate(['todos']);
       }).catch(err => {
+        alert('Login failed. Try again')
         console.log("Something went wrong", err);        
       });
     }
@@ -85,7 +86,9 @@ export class UserService {
 
   //set reminder function
   setRemider(id, date) {
-    this.angularFirestore.collection('todos').doc(id).update({ dueDate: date });
+    this.angularFirestore.collection('todos').doc(id).update({ dueDate: date }).then((res) => {
+      alert("Reminder date set");
+    });
   }
 
   // add message function.

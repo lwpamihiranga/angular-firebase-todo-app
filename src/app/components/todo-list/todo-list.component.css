@@ -9,3 +9,34 @@ a {
 .expired {
     background-color: red;
 }
+ 
+h3 {
+    text-align: center;
+}
+
+.material-icons {
+    cursor: default;
+}
+
+.material-icons:hover {
+    box-shadow: inset 0 0 0 25px #53a7ea;
+}
+
+.edit-disable {
+    pointer-events: none;
+}
+
+#todo-display {
+    pointer-events:none;
+}
+
+#my-tasks-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 80%;
+}
+
+.jumbotron {
+    padding-top: 30px;
+}
+

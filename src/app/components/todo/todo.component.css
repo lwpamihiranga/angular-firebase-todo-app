@@ -5,3 +5,23 @@
 .material-icons {
     cursor: default;
 }
+
+.material-icons:hover {
+    box-shadow: inset 0 0 0 25px #53a7ea;
+}
+
+h4 {
+    display: inline;
+    size: 100%;
+}
+
+a {
+    text-align: right;
+    float: right;
+}
+
+#add-task-dev {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
