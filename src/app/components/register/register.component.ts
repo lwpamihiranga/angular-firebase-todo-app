@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,9 +10,9 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent implements OnInit {
 
   registerForm = this.formBuilder.group({
-    name: [''],
-    email: [''],
-    password: [''],
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    password: ['', Validators.required],
   });
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {

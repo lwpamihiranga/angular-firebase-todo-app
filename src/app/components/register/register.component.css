@@ -2,6 +2,31 @@
     margin-top: 20px;
 }
 
+.jumbotron {
+    padding-top: 30px;
+}
 #login-btn {
     margin-left: 10px;
+}
+
+#register-btn {
+    border-radius: 15px;
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 40%;
+}
+
+#registration-form-container {
+    margin-left: 30%;
+    margin-right: 30%;
+    width: 40%;
+}
+
+#register-header {
+    text-align: center;
+}
+
+p {
+    margin-top: 5%;
+    text-align: center;
 }
