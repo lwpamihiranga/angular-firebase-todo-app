@@ -70,11 +70,13 @@ export class MessagingService {
   // }
 
   private saveToken(userID, token): void {
+
     this.model = {
       uid: userID,
       fcmToken: token
     }
     // this.afs.collection('users').add({userId: userID, fcmToken: token });
-    this.afs.collection('users').add(this.model); 
+    // if(!currentTokens[token])
+      this.afs.collection('users').add(this.model); 
   }
 }
