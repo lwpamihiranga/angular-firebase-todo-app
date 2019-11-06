@@ -38,7 +38,7 @@
                         <input id="todo-display" type="text" class="form-control" #TodoUpdate value={{todo.todo}} >
                         <div class="input-group-append">
                             <input [ngClass]="{'expired': todo.isChecked}"  type="datetime-local" min="2019-01-01T00:00" max="2020-12-31T00:00" #ToSetReminder value="{{todo.dueDate}}">
-                            <a (click)="setReminder(todo.id, ToSetReminder.value)"><span class="material-icons">alarm</span></a>
+                            <a (click)="setReminder(todo.id, ToSetReminder.value, todo.dueDate)"><span class="material-icons">alarm</span></a>
                             <a (click)="editClick(todo.todo, todo.id)"><span class="material-icons">edit</span></a>
                             <a (click)="deleteTodo(todo.id)"><span class="material-icons">delete</span></a>
                             <a (click)="checkDate(todo.id, todo.dueDate)"><span class="material-icons">check_circle_outline</span></a>
