@@ -11,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
 
   loginForm = this.formBuilder.group({
-    email: ['', Validators.required],
+    email: ['', Validators.email],
     password: ['', Validators.required],
   });
 

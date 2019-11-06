@@ -41,7 +41,7 @@
                             <a (click)="setReminder(todo.id, ToSetReminder.value, todo.dueDate)"><span class="material-icons">alarm</span></a>
                             <a (click)="editClick(todo.todo, todo.id)"><span class="material-icons">edit</span></a>
                             <a (click)="deleteTodo(todo.id)"><span class="material-icons">delete</span></a>
-                            <a (click)="checkDate(todo.id, todo.dueDate)"><span class="material-icons">check_circle_outline</span></a>
+                            <a id="check-btn" (click)="checkDate(todo.id, todo.dueDate)"><span class="material-icons">check_circle_outline</span></a>
                         </div>
                 </div>
         </li>
@@ -59,10 +59,14 @@
 
 <script>
     // document.getElementById('check_btn').dispatchEvent(new MouseEvent("click"));
-    let buttons = [ ];
-    buttons = document.getElementsByClassName('check_btn');
+    // let buttons = [ ];
+    // buttons = document.getElementsByClassName('check_btn');
 
-    for(i = 0; i < buttons.length; i++) {
-        buttons[i].dispatchEvent(new MouseEvent("click"));
+    // for(i = 0; i < buttons.length; i++) {
+    //     buttons[i].dispatchEvent(new MouseEvent("click"));
+    // }
+
+    window.onload = function() {
+        document.getElementById('check-btn').click();
     }
 </script>

@@ -31,6 +31,7 @@ export class UserService {
       console.log("User Registered!");
       this.router.navigate(['todos']);
     }).catch(err => {
+      alert('Registration failed. Try again');
       console.log("Something went worng!", err);
     });
   }
@@ -48,7 +49,7 @@ export class UserService {
       })
         this.router.navigate(['todos']);
       }).catch(err => {
-        alert('Login failed. Try again')
+        alert('Login failed. Try again');
         console.log("Something went wrong", err);        
       });
     }
